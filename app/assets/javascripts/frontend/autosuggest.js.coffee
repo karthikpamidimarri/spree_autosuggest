@@ -39,8 +39,8 @@ class @Autosuggest
   from_cache: (term) ->
     result = false
     $.each @cache, (key, data) =>
-      if term.indexOf(key) is 0 and data.length < @settings.from_db
-        result = @filter_terms(data, term).slice(0, @settings.to_display)
+      if term.indexOf(key) is 0 and data.suggestions.length < @settings.from_db
+        result = @filter_terms(data.suggestions, term).slice(0, @settings.to_display)
     result
 
   filter_terms: (array, term) ->
